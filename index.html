@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arun Kumar - Resume</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 40px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1, h2, h3 {
+            color: #000;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 18px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+        }
+        h3 {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        p, li {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .contact-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .contact-info a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .job {
+            margin-bottom: 15px;
+        }
+        .job-title {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        #loading {
+            text-align: center;
+            font-size: 16px;
+        }
+        #error {
+            color: red;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Loading resume...</div>
+    <div id="error" style="display: none;"></div>
+    <header id="header"></header>
+    <section id="summary"></section>
+    <section id="skills"></section>
+    <section id="experience"></section>
+    <section id="education"></section>
+    <section id="personal"></section>
+
+    <script>
+        async function loadResume() {
+            try {
+                const response = await fetch('resume.json');
+                if (!response.ok) throw new Error('Failed to load resume data');
+                const data = await response.json();
+
+                // Hide loading message and show content
+                document.getElementById('loading').style.display = 'none';
+
+                // Header
+                const header = document.getElementById('header');
+                header.innerHTML = `
+                    <h1>${data.name}</h1>
+                    <div class="contact-info">
+                        <p>Email: ${data.contact.email}</p>
+                        <p>
+                            LinkedIn: <a href="${data.contact.linkedin}">${data.contact.linkedin}</a> |
+                            GitHub: <a href="${data.contact.github}">${data.contact.github}</a>
+                        </p>
+                        <p>Location: ${data.contact.location}</p>
+                    </div>
+                `;
+
+                // Professional Summary
+                document.getElementById('summary').innerHTML = `
+                    <h2>Professional Summary</h2>
+                    <p>${data.summary}</p>
+                `;
+
+                // Skills
+                const skillsSection = document.getElementById('skills');
+                let skillsHTML = '<h2>Skills</h2><ul>';
+                data.skills.forEach(skill => {
+                    skillsHTML += `<li><strong>${skill.category}:</strong> ${skill.items.join(', ')}</li>`;
+                });
+                skillsHTML += '</ul>';
+                skillsSection.innerHTML = skillsHTML;
+
+                // Professional Experience
+                const experienceSection = document.getElementById('experience');
+                let experienceHTML = '<h2>Professional Experience</h2>';
+                data.experience.forEach(job => {
+                    experienceHTML += `
+                        <div class="job">
+                            <div class="job-title">${job.title} <span>${job.period}</span></div>
+                            <p>${job.company}${job.location ? ', ' + job.location : ''}</p>
+                            <ul>
+                                ${job.responsibilities.map(resp => `<li>${resp}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                });
+                experienceSection.innerHTML = experienceHTML;
+
+                // Education
+                const educationSection = document.getElementById('education');
+                let educationHTML = `
+                    <h2>Education</h2>
+                    <table>
+                        <tr>
+                            <th>Qualification</th>
+                            <th>Institution</th>
+                            <th>Year</th>
+                        </tr>
+                        ${data.education.map(edu => `
+                            <tr>
+                                <td>${edu.qualification}</td>
+                                <td>${edu.institution}</td>
+                                <td>${edu.year}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
+                `;
+                educationSection.innerHTML = educationHTML;
+
+                // Personal Details
+                const personalSection = document.getElementById('personal');
+                personalSection.innerHTML = `
+                    <h2>Personal Details</h2>
+                    <ul>
+                        <li><strong>Date of Birth:</strong> ${data.personal.dob}</li>
+                        <li><strong>Marital Status:</strong> ${data.personal.maritalStatus}</li>
+                        <li><strong>Nationality:</strong> ${data.personal.nationality}</li>
+                        <li><strong>Languages Known:</strong> ${data.personal.languages.join(', ')}</li>
+                        <li><strong>Address:</strong> ${data.personal.address}</li>
+                    </ul>
+                `;
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent = 'Error loading resume: ' + error.message;
+            }
+        }
+
+        // Load resume on page load
+        window.onload = loadResume;
+    </script>
+</body>
+</html>

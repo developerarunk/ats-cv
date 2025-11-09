@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arun Kumar - Minimalist Grid Resume</title>
+    <style>
+        /* Minimalist Grid Styles */
+        body {
+            font-family: 'Georgia', serif; /* A professional serif font for contrast */
+            margin: 40px;
+            line-height: 1.5;
+            color: #333;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        :root {
+            --primary-color: #6a1b9a; /* Deep Purple */
+            --section-bg: #fafafa;
+            --border-color: #eee;
+        }
+
+        h1, h2, h3 {
+            color: #000;
+            margin-bottom: 5px;
+        }
+        h1 {
+            font-size: 30px;
+            text-align: left;
+            margin-bottom: 0;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 3px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+        p, li {
+            font-size: 14px;
+            margin: 3px 0;
+        }
+        ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        /* Header and Contact */
+        .contact-info {
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #666;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .contact-info span:not(:last-child):after {
+            content: ' | ';
+            margin: 0 5px;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: var(--section-bg);
+            border: 1px solid var(--border-color);
+        }
+        #summary {
+             background-color: transparent;
+             border: none;
+             padding: 0;
+             margin-bottom: 20px;
+        }
+
+        /* Experience Layout */
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 5px;
+        }
+        .job-title {
+            color: var(--primary-color);
+        }
+        .job-company {
+            font-style: italic;
+        }
+        .job-period {
+            font-weight: normal;
+            font-size: 13px;
+            color: #666;
+        }
+        .job ul {
+             padding-left: 20px;
+        }
+
+        /* Skills Layout */
+        #skills ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        #skills li {
+            margin-bottom: 5px;
+            padding: 2px 0;
+        }
+        #skills strong {
+            font-weight: 700;
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        /* Education Table - Back to standard table for ATS consistency */
+        #education table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        #education th, #education td {
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            text-align: left;
+        }
+        #education th {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Loading resume...</div>
+    <div id="error" style="display: none;"></div>
+    <header id="header"></header>
+    <section id="summary"></section>
+    <section id="experience"></section>
+    <section id="skills"></section>
+    <section id="education"></section>
+    <section id="personal" style="display: none;"></section>
+
+    <script>
+        // (The JavaScript remains the same as the previous theme, 
+        // ensuring full compatibility with your existing resume.json data.)
+        async function loadResume() {
+            try {
+                const response = await fetch('resume.json');
+                if (!response.ok) throw new Error('Failed to load resume data');
+                const data = await response.json();
+
+                document.getElementById('loading').style.display = 'none';
+
+                // Header
+                const header = document.getElementById('header');
+                header.innerHTML = `
+                    <h1>${data.name}</h1>
+                    <div class="contact-info">
+                        <span>${data.contact.email}</span>
+                        <span><a href="${data.contact.linkedin}">LinkedIn</a></span>
+                        <span><a href="${data.contact.github}">GitHub</a></span>
+                        <span>${data.contact.location}</span>
+                    </div>
+                `;
+
+                // Professional Summary
+                document.getElementById('summary').innerHTML = `
+                    <p>${data.summary}</p>
+                `;
+
+                // Professional Experience
+                const experienceSection = document.getElementById('experience');
+                let experienceHTML = '<h2>Professional Experience</h2>';
+                data.experience.forEach(job => {
+                    experienceHTML += `
+                        <div class="job">
+                            <div class="job-header">
+                                <div>
+                                    <span class="job-title">${job.title}</span> | 
+                                    <span class="job-company">${job.company}${job.location ? ', ' + job.location : ''}</span>
+                                </div>
+                                <span class="job-period">${job.period}</span>
+                            </div>
+                            <ul>
+                                ${job.responsibilities.map(resp => `<li>${resp}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                });
+                experienceSection.innerHTML = experienceHTML;
+
+                // Skills
+                const skillsSection = document.getElementById('skills');
+                let skillsHTML = '<h2>Core Competencies</h2><ul>';
+                data.skills.forEach(skill => {
+                    skillsHTML += `<li><strong>${skill.category}:</strong> ${skill.items.join(', ')}</li>`;
+                });
+                skillsHTML += '</ul>';
+                skillsSection.innerHTML = skillsHTML;
+
+                // Education
+                const educationSection = document.getElementById('education');
+                let educationHTML = `
+                    <h2>Education</h2>
+                    <table>
+                        <tr>
+                            <th>Qualification</th>
+                            <th>Institution</th>
+                            <th>Year</th>
+                        </tr>
+                        ${data.education.map(edu => `
+                            <tr>
+                                <td>${edu.qualification}</td>
+                                <td>${edu.institution}</td>
+                                <td>${edu.year}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
+                `;
+                educationSection.innerHTML = educationHTML;
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent = 'Error loading resume: ' + error.message;
+            }
+        }
+
+        window.onload = loadResume;
+    </script>
+</body>
+</html>

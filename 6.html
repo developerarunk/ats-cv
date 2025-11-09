@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arun Kumar - Modern Visual Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Modern Visual Layout Styles */
+        body {
+            font-family: 'Open Sans', sans-serif; /* Readable body font */
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resume-page {
+            width: 8.5in; /* Standard US letter width */
+            min-height: 11in; /* Standard US letter height */
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 20px; /* Add some padding at the bottom */
+        }
+
+        /* Top Header Area */
+        .top-header {
+            background-color: #007bff; /* Primary blue color */
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .name-title-contact {
+            flex-grow: 1;
+        }
+        .name-title-contact h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            margin: 0;
+            font-weight: 700;
+            color: #fff;
+        }
+        .name-title-contact .role {
+            font-size: 1.1em;
+            margin: 5px 0 10px 0;
+            font-weight: 500;
+            color: #e0e0e0;
+        }
+        .name-title-contact .contact-details {
+            font-size: 0.9em;
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 10px 20px;
+        }
+        .name-title-contact .contact-details span,
+        .name-title-contact .contact-details a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+        .name-title-contact .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .initials-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #007bff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        /* Main Content Grid */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr; /* Experience (wider) and Sidebar (narrower) */
+            padding: 20px 40px;
+            gap: 30px;
+            flex-grow: 1;
+        }
+
+        /* Section Headers */
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #222;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        h2:first-of-type { /* No top margin for the first section header in each column */
+            margin-top: 0;
+        }
+
+        /* Left Column (Experience) */
+        .experience-item {
+            margin-bottom: 20px;
+        }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+        .experience-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #007bff; /* Match top bar color */
+        }
+        .experience-company-location {
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #555;
+            margin-top: 2px;
+        }
+        .experience-period {
+            font-size: 0.9em;
+            color: #777;
+            font-weight: 400;
+        }
+        .experience-item ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        .experience-item li {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        /* Right Column (Summary, Skills, Languages) */
+        .sidebar-section p {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .sidebar-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-section li {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        /* Skills Tags */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .skill-tag {
+            background-color: #e9ecef;
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+        .skill-category {
+            font-weight: 600;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+
+        /* Languages Progress Bars (Simplified for HTML/CSS) */
+        .language-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .language-item span:first-child {
+            width: 80px; /* Allocate space for language name */
+            font-size: 0.9em;
+            color: #444;
+        }
+        .language-bar-container {
+            flex-grow: 1;
+            background-color: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden; /* Ensure fill stays within bounds */
+        }
+        .language-bar-fill {
+            height: 100%;
+            background-color: #007bff; /* Matching primary color */
+            border-radius: 4px;
+        }
+        /* Example widths for progress bars */
+        .language-bar-fill.expert { width: 100%; }
+        .language-bar-fill.advanced { width: 80%; }
+        .language-bar-fill.intermediate { width: 60%; }
+        .language-bar-fill.basic { width: 40%; }
+        
+        /* Specific section styling */
+        #summary p {
+            font-style: italic;
+        }
+
+        #education table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        #education td {
+            padding: 5px 0;
+            border-bottom: 1px dashed #eee;
+            vertical-align: top;
+        }
+        #education tr:last-child td {
+            border-bottom: none;
+        }
+        #education .edu-degree {
+            font-weight: 600;
+            color: #333;
+        }
+        #education .edu-institution {
+            font-style: italic;
+            color: #555;
+        }
+        #education .edu-year {
+            text-align: right;
+            color: #777;
+        }
+
+        /* Loading and Error */
+        #loading, #error {
+            text-align: center;
+            padding: 20px;
+            font-size: 1.1em;
+            display: block;
+        }
+        #error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-page">
+        <div id="loading">Loading resume...</div>
+        <div id="error" style="display: none;"></div>
+
+        <div class="top-header" id="header-content">
+            </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <section id="experience"></section>
+                <section id="education"></section> </div>
+
+            <div class="right-column">
+                <section id="summary" class="sidebar-section"></section>
+                <section id="strengths" class="sidebar-section">
+                    <h2>Strengths</h2>
+                    <ul id="strengths-list"></ul>
+                </section>
+                <section id="languages" class="sidebar-section">
+                    <h2>Languages</h2>
+                    <div id="languages-list"></div>
+                </section>
+                <section id="skills" class="sidebar-section"></section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mapping for language proficiency to CSS classes for bar width
+        const proficiencyMap = {
+            "expert": "expert",
+            "fluent": "expert", // Treat fluent as expert for visual
+            "advanced": "advanced",
+            "intermediate": "intermediate",
+            "basic": "basic",
+            "native": "expert" // Native is always expert
+        };
+
+        async function loadResume() {
+            try {
+                const response = await fetch('resume.json');
+                if (!response.ok) throw new Error('Failed to load resume data');
+                const data = await response.json();
+
+                document.getElementById('loading').style.display = 'none';
+
+                // Header
+                const headerContent = document.getElementById('header-content');
+                const initials = data.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                headerContent.innerHTML = `
+                    <div class="name-title-contact">
+                        <h1>${data.name}</h1>
+                        <div class="role">Senior Full Stack Developer</div> <div class="contact-details">
+                            <span>${data.contact.email}</span>
+                            <a href="${data.contact.linkedin}" target="_blank">LinkedIn</a>
+                            <a href="${data.contact.github}" target="_blank">GitHub</a>
+                            <span>${data.contact.location}</span>
+                        </div>
+                    </div>
+                    <div class="initials-circle">${initials}</div>
+                `;
+
+                // Professional Summary
+                document.getElementById('summary').innerHTML = `
+                    <h2>Summary</h2>
+                    <p>${data.summary}</p>
+                `;
+                
+                // Strengths (Assuming these can be extracted or added to resume.json)
+                // For now, I'll add placeholder data matching the image
+                const strengthsList = document.getElementById('strengths-list');
+                strengthsList.innerHTML = `
+                    <li>Full Stack Development</li>
+                    <li>Expertise in JavaScript frameworks and responsive web design</li>
+                    <li>Impactful Solutions Development</li>
+                    <li>Successfully developed scalable web applications that improved customer engagement and operational efficiency, contributing to significant revenue growth for multiple clients</li>
+                `;
+
+
+                // Languages
+                const languagesList = document.getElementById('languages-list');
+                if (data.personal && data.personal.languages && data.personal.languages.length > 0) {
+                    // Assuming language data in resume.json would look like:
+                    // "languages": [{"name": "English", "proficiency": "expert"}, {"name": "Hindi", "proficiency": "native"}]
+                    // If your resume.json is just ["English", "Hindi"], we need to assign a default proficiency.
+                    data.personal.languages.forEach(lang => {
+                        const langName = typeof lang === 'string' ? lang : lang.name;
+                        const proficiency = typeof lang === 'string' ? 'advanced' : (lang.proficiency ? lang.proficiency.toLowerCase() : 'advanced'); // Default
+                        const cssClass = proficiencyMap[proficiency] || 'intermediate'; // Default to intermediate if not found
+                        
+                        languagesList.innerHTML += `
+                            <div class="language-item">
+                                <span>${langName}</span>
+                                <div class="language-bar-container">
+                                    <div class="language-bar-fill ${cssClass}"></div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    // Placeholder if no language data in JSON
+                    languagesList.innerHTML = `
+                        <div class="language-item"><span>English</span><div class="language-bar-container"><div class="language-bar-fill expert"></div></div></div>
+                        <div class="language-item"><span>Hindi</span><div class="language-bar-container"><div class="language-bar-fill advanced"></div></div></div>
+                    `;
+                }
+
+
+                // Skills Tags (Grouped by category, then displayed as tags)
+                const skillsSection = document.getElementById('skills');
+                let skillsHTML = '<h2>Skills</h2>';
+                data.skills.forEach(skillCat => {
+                    skillsHTML += `<div class="skill-category">${skillCat.category}</div>`;
+                    skillsHTML += '<div class="skills-list">';
+                    skillCat.items.forEach(item => {
+                        skillsHTML += `<span class="skill-tag">${item}</span>`;
+                    });
+                    skillsHTML += '</div>';
+                });
+                skillsSection.innerHTML = skillsHTML;
+
+                // Professional Experience (Left Column)
+                const experienceSection = document.getElementById('experience');
+                let experienceHTML = '<h2>Experience</h2>';
+                data.experience.forEach(job => {
+                    experienceHTML += `
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <div class="experience-title">${job.title}</div>
+                                <div class="experience-period">${job.period}</div>
+                            </div>
+                            <div class="experience-company-location">${job.company} ${job.location ? ' | ' + job.location : ''}</div>
+                            <ul>
+                                ${job.responsibilities.map(resp => `<li>${resp}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                });
+                experienceSection.innerHTML = experienceHTML;
+
+                // Education (Left Column)
+                const educationSection = document.getElementById('education');
+                let educationHTML = `
+                    <h2>Education</h2>
+                    <table>
+                        ${data.education.map(edu => `
+                            <tr>
+                                <td class="edu-degree">${edu.qualification}</td>
+                                <td class="edu-year">${edu.year}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="edu-institution">${edu.institution}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
+                `;
+                educationSection.innerHTML = educationHTML;
+
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent = 'Error loading resume: ' + error.message;
+            }
+        }
+
+        window.onload = loadResume;
+    </script>
+</body>
+</html>

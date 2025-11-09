@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arun Kumar - High-Impact Resume</title>
+    <style>
+        /* Modern, Clean Sans-Serif Font */
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.5; /* Slightly tighter line height */
+            color: #222; /* Darker text for better contrast */
+            max-width: 900px; /* Slightly wider for modern layout */
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #ffffff;
+        }
+
+        /* Accent Color for Headings/Borders (Professional Blue) */
+        :root {
+            --primary-color: #0056b3; /* A strong, professional blue */
+            --border-color: #e0e0e0;
+        }
+
+        h1, h2, h3 {
+            color: #000;
+            margin-bottom: 5px;
+        }
+        h1 {
+            font-size: 28px;
+            text-align: left;
+            margin-bottom: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        h2 {
+            font-size: 20px;
+            /* Underline with primary color, thicker line */
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 4px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        h3 {
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        p, li {
+            font-size: 14.5px; /* Slightly larger for readability */
+            margin: 3px 0;
+        }
+        ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        /* Contact Info - Clean and Horizontal */
+        .contact-info {
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .contact-info span {
+            margin-right: 15px;
+            white-space: nowrap;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Professional Summary - Bold and set apart */
+        #summary p {
+            font-style: italic;
+            background-color: #f7f9fc;
+            padding: 10px 15px;
+            border-left: 5px solid var(--primary-color);
+            margin-top: 10px;
+        }
+
+        /* Job Entry Styling */
+        .job {
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border-color); /* Subtle separator */
+        }
+        .job:last-child {
+            border-bottom: none;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .job-title-company {
+            font-weight: 700;
+            color: #000;
+        }
+        .job-details {
+            font-weight: 500;
+            margin-top: 3px;
+        }
+        .job-period-location {
+            text-align: right;
+            font-weight: 400;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        /* Skills List - Clear and grouped */
+        #skills ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 5px;
+        }
+        #skills li {
+            margin-bottom: 5px;
+        }
+        #skills strong {
+            color: var(--primary-color);
+            margin-right: 5px;
+            font-weight: 700;
+        }
+
+        /* Education Table - Clean and minimalist */
+        #education table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        #education th, #education td {
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            padding: 8px 0;
+            text-align: left;
+        }
+        #education th {
+            background-color: transparent;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        #education tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Remove less relevant section for executive-level focus */
+        #personal {
+            display: none; /* Hide personal details section by default */
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Loading resume...</div>
+    <div id="error" style="display: none;"></div>
+    <header id="header"></header>
+    <section id="summary"></section>
+    <section id="experience"></section>
+    <section id="skills"></section>
+    <section id="education"></section>
+    <section id="personal"></section>
+
+    <script>
+        async function loadResume() {
+            try {
+                const response = await fetch('resume.json');
+                if (!response.ok) throw new Error('Failed to load resume data');
+                const data = await response.json();
+
+                // Hide loading message and show content
+                document.getElementById('loading').style.display = 'none';
+
+                // Header
+                const header = document.getElementById('header');
+                header.innerHTML = `
+                    <h1>${data.name}</h1>
+                    <div class="contact-info">
+                        <span>${data.contact.email}</span>
+                        <span><a href="${data.contact.linkedin}">LinkedIn</a></span>
+                        <span><a href="${data.contact.github}">GitHub</a></span>
+                        <span>${data.contact.location}</span>
+                    </div>
+                `;
+
+                // Professional Summary
+                document.getElementById('summary').innerHTML = `
+                    <h2>Professional Summary</h2>
+                    <p>${data.summary}</p>
+                `;
+
+                // Professional Experience (Moved up, as this is the most important section)
+                const experienceSection = document.getElementById('experience');
+                let experienceHTML = '<h2>Professional Experience</h2>';
+                data.experience.forEach(job => {
+                    experienceHTML += `
+                        <div class="job">
+                            <div class="job-header">
+                                <div>
+                                    <div class="job-title-company">${job.title} | ${job.company}</div>
+                                    <div class="job-details">${job.location ? job.location : ''}</div>
+                                </div>
+                                <div class="job-period-location">
+                                    ${job.period}
+                                </div>
+                            </div>
+                            <ul>
+                                ${job.responsibilities.map(resp => `<li>${resp}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                });
+                experienceSection.innerHTML = experienceHTML;
+
+                // Skills
+                const skillsSection = document.getElementById('skills');
+                let skillsHTML = '<h2>Core Competencies & Skills</h2><ul>';
+                data.skills.forEach(skill => {
+                    skillsHTML += `<li><strong>${skill.category}:</strong> ${skill.items.join(', ')}</li>`;
+                });
+                skillsHTML += '</ul>';
+                skillsSection.innerHTML = skillsHTML;
+
+
+                // Education
+                const educationSection = document.getElementById('education');
+                let educationHTML = `
+                    <h2>Education</h2>
+                    <table>
+                        <tr>
+                            <th>Qualification</th>
+                            <th>Institution</th>
+                            <th>Year</th>
+                        </tr>
+                        ${data.education.map(edu => `
+                            <tr>
+                                <td>${edu.qualification}</td>
+                                <td>${edu.institution}</td>
+                                <td>${edu.year}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
+                `;
+                educationSection.innerHTML = educationHTML;
+
+                // Optional: Personal Details (Kept hidden, as they distract from professional focus)
+                const personalSection = document.getElementById('personal');
+                // You can uncomment the below if you absolutely need this section, 
+                // but it's generally advised to remove it for high-level roles.
+                /*
+                personalSection.style.display = 'block'; 
+                personalSection.innerHTML = `
+                    <h2>Personal Details (Optional)</h2>
+                    <ul>
+                        <li><strong>Date of Birth:</strong> ${data.personal.dob}</li>
+                        <li><strong>Nationality:</strong> ${data.personal.nationality}</li>
+                        <li><strong>Languages Known:</strong> ${data.personal.languages.join(', ')}</li>
+                    </ul>
+                `;
+                */
+
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent = 'Error loading resume: ' + error.message;
+            }
+        }
+
+        // Load resume on page load
+        window.onload = loadResume;
+    </script>
+</body>
+</html>
