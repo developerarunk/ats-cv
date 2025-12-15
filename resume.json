@@ -6,7 +6,7 @@
     "github": "https://github.com/developerarunk",
     "location": "Punjab, India"
   },
-  "summary": "Senior Full Stack Developer with 8+ years of experience building scalable, high-performance applications using JavaScript (React, Angular, Next.js), Java (Spring Boot), Python (Django, Flask), and C# (ASP.NET). Strong backend expertise in API development, microservices, cloud integrations, and database design. Proven success optimizing UI/UX, improving system performance, and building automation workflows including WhatsApp APIs, admin panels, and e-commerce solutions. Seeking opportunities to leverage multi-stack expertise across Java, Python, JavaScript, PHP, and C#.",
+  "summary": "Full Stack Developer with 3.5 years of experience building scalable, high-performance applications using JavaScript (React, Angular, Next.js), Java (Spring Boot), Python (Django, Flask), and C# (ASP.NET). Strong backend expertise in API development, microservices, cloud integrations, and database design. Proven success optimizing UI/UX, improving system performance, and building automation workflows including WhatsApp APIs, admin panels, and e-commerce solutions. Seeking opportunities to leverage multi-stack expertise across Java, Python, JavaScript, PHP, and C#.",
   
   "skills": [
     {
@@ -15,7 +15,7 @@
     },
     {
       "category": "Frontend Frameworks",
-      "items": ["React", "Next.js", "Angular"]
+      "items": ["Angular", "React", "Next.js", "Vue.js", "Nuxt.js"]
     },
     {
       "category": "Backend Frameworks",
@@ -45,57 +45,14 @@
 
   "experience": [
     {
-      "title": "Senior Full Stack Developer",
+      "title": "Full Stack Developer",
       "company": "Zeapl.ai",
       "location": "Punjab, India",
       "period": "August 2022 - Present",
       "responsibilities": [
-        "Developed frontend interfaces using React and JavaScript for WhatsApp Business API integrations, handling 10,000+ daily users and reducing response latency by 40%.",
-        "Optimized admin panel performance using JavaScript, AJAX, and PHP (Laravel/CodeIgniter), improving system reliability by 25%.",
-        "Built custom features with a JavaScript-first approach, supported by PHP/MySQL backends for secure and scalable operations."
-      ]
-    },
-    {
-      "title": "Full Stack Developer (Freelance)",
-      "company": "Upwork",
-      "location": "Remote",
-      "period": "September 2021 - September 2022",
-      "responsibilities": [
-        "Delivered WordPress, WooCommerce, and BuddyPress solutions using JavaScript with React/Angular integrations, increasing performance and online revenue for 20+ clients by ~30%.",
-        "Resolved critical bugs and optimized site performance using JavaScript and PHP/MySQL, restoring high-traffic websites within 24–48 hours.",
-        "Built custom full-stack applications using JavaScript (frontend) and PHP (backend), supporting 5,000+ concurrent users."
-      ]
-    },
-    {
-      "title": "Web Developer",
-      "company": "BizmerlinHR",
-      "location": "Punjab, India",
-      "period": "March 2021 - September 2021",
-      "responsibilities": [
-        "Customized platforms using JavaScript, Java, HTML, CSS, and AJAX for dynamic features, improving site performance and user engagement by 20%.",
-        "Developed modules and plugins using Java and JavaScript with PHP integrations, reducing error rates by 35%.",
-        "Managed system updates and enhancements using Java for backend components and JavaScript for frontend improvements."
-      ]
-    },
-    {
-      "title": "Web Developer",
-      "company": "GLP InfoTech",
-      "location": "Punjab, India",
-      "period": "November 2017 - December 2020",
-      "responsibilities": [
-        "Customized WordPress plugins/themes using JavaScript, Python, C#, ASP.NET, and PHP, resulting in 15+ high-performance deployments with 25% faster load times.",
-        "Developed backend features using Python, C#, ASP.NET, and PHP (Laravel/CodeIgniter) with MySQL, while building JavaScript-driven interfaces for improved UX.",
-        "Mentored team members on JavaScript, Python, and C# best practices and contributed to code reviews and architectural enhancements."
-      ]
-    },
-    {
-      "title": "Intern Web Developer",
-      "company": "Cyberframe Infotech Pvt Ltd",
-      "location": "Punjab, India",
-      "period": "June 2017 - November 2017",
-      "responsibilities": [
-        "Developed user-friendly admin panels using Angular and React for 1,000+ users.",
-        "Built foundational full-stack applications using JavaScript (frontend) and PHP (CodeIgniter/Laravel) with MySQL."
+        "Migrated legacy JavaScript and CodeIgniter code to Angular, improving maintainability, performance, and scalability.",
+        "Developed Campaign Runner and Notification Service with Java Spring Boot, handling asynchronous processing via RabbitMQ and delivering messages across Email, WhatsApp, and Telegram.",
+        "Built Flow Builder UI using React Flow for node-based bot workflows, integrating backend services to enable real-time automation and enhanced user engagement."
       ]
     }
   ],
@@ -112,10 +69,34 @@
       "year": "2012 - 2014"
     }
   ],
-  "projects":{
-    "link": "https://hx3oynhovpk7xzb3whfblybjne0aksel.lambda-url.ap-south-1.on.aws/",
-    "qr": "qr.svg"
-  },
+  "projects": [
+    {
+      "name": "Campaign Runner & Notification Service",
+      "description": "Developed a scalable campaign management and notification platform to target users efficiently.",
+      "details": [
+        "Implemented Campaign Runner allowing users to upload Excel files or select database tables to define target audiences.",
+        "Created asynchronous processing using RabbitMQ queues and consumer workers to handle high-volume record processing.",
+        "Built a Notification Service capable of delivering messages via Email, WhatsApp, and Telegram.",
+        "Migrated legacy PHP code to Java Spring Boot to improve scalability, maintainability, and performance.",
+        "Ensured message delivery reliability with logging, error handling, and retry mechanisms."
+      ],
+      "technologies": ["Java Spring Boot", "RabbitMQ", "PHP", "MySQL", "Email, WhatsApp, Telegram APIs", "Docker"],
+      "link": "https://projectone.example.com"
+    },
+    {
+      "name": "Flow Builder",
+      "description": "Created an interactive workflow builder for bot automation across multiple messaging platforms.",
+      "details": [
+        "Designed a React Flow-based UI for users to visually create node-based bot workflows.",
+        "Implemented backend services in Spring Boot to handle real-time interactions on WhatsApp and Telegram bots.",
+        "Enabled dynamic workflow execution, allowing each node to trigger actions, messages, or conditional logic.",
+        "Optimized system for scalability and reliability to support concurrent bot flows and multiple users.",
+        "Improved user engagement by providing a visual and interactive bot-building experience."
+      ],
+      "technologies": ["React.js", "React Flow", "Java Spring Boot", "Node.js", "WhatsApp & Telegram APIs", "MySQL", "REST APIs"],
+      "link": "https://projecttwo.example.com"
+    }
+  ],
   "personal": {
     "dob": "September 29, 1996",
     "maritalStatus": "Married",
