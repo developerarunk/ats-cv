@@ -1,25 +1,33 @@
 {
   "name": "Arun Kumar",
+  "experience_years": 8,
+  "current_role": "Senior Full Stack Developer / Technical Lead",
+  "primary_role_fit": "Full Stack Developer (ReactJS, Microservices, Spring Boot)",
+  "notice_period": "Immediate to 30 Days",
+  "preferred_location": "Bangalore",
+  "open_to_relocation": true,
+
   "contact": {
     "email": "developerarunk@gmail.com",
     "linkedin": "https://www.linkedin.com/in/developerarunk/",
     "github": "https://github.com/developerarunk",
-    "location": "Punjab, India"
+    "location": "Indore, India"
   },
-  "summary": "Full Stack Developer with 3.5 years of experience building scalable, high-performance applications using JavaScript (React, Angular, Next.js), Java (Spring Boot), Python (Django, Flask), and C# (ASP.NET). Strong backend expertise in API development, microservices, cloud integrations, and database design. Proven success optimizing UI/UX, improving system performance, and building automation workflows including WhatsApp APIs, admin panels, and e-commerce solutions. Seeking opportunities to leverage multi-stack expertise across Java, Python, JavaScript, PHP, and C#.",
-  
+
+  "summary": "Senior Full Stack Developer with 8+ years of experience in designing, developing, and maintaining scalable, high-performance applications. Strong expertise in ReactJS, Java, Spring Boot and Microservices architecture. Proven ability to work in agile environments, collaborate with cross-functional teams, and deliver business-aligned solutions. Experienced in troubleshooting production systems, ensuring code quality, and following best engineering practices across the full software development lifecycle.",
+
   "skills": [
     {
       "category": "Core Languages",
-      "items": ["JavaScript", "TypeScript", "Java", "Python", "PHP", "C#", "HTML", "CSS"]
+      "items": ["Java", "JavaScript", "TypeScript", "Python"]
     },
     {
-      "category": "Frontend Frameworks",
-      "items": ["Angular", "React", "Next.js", "Vue.js", "Nuxt.js"]
+      "category": "Frontend",
+      "items": ["ReactJS", "HTML", "CSS", "Redux"]
     },
     {
-      "category": "Backend Frameworks",
-      "items": ["Spring Boot", "Django", "Flask", "ASP.NET", "Laravel", "CodeIgniter", "Express.js"]
+      "category": "Backend & Microservices",
+      "items": ["Spring Boot", "Java Microservices", "REST APIs", "Node.js"]
     },
     {
       "category": "Databases",
@@ -27,32 +35,57 @@
     },
     {
       "category": "Cloud & DevOps",
-      "items": ["AWS (EC2, S3, RDS, IAM, Lambda, API Gateway)", "Docker", "CI/CD", "GitHub Actions"]
+      "items": ["AWS", "Docker", "CI/CD", "Microservices Architecture"]
     },
     {
-      "category": "AI & Automation",
-      "items": ["Generative AI", "RAG", "N8N", "AI Agents", "ChatGPT", "Hugging Face", "Llama", "Gemini", "Grok"]
-    },
-    {
-      "category": "CMS & Platforms",
-      "items": ["WordPress", "WooCommerce", "BuddyPress", "REST APIs"]
+      "category": "Architecture & Practices",
+      "items": ["Scalable System Design", "Agile/Scrum", "Code Quality", "Performance Optimization"]
     },
     {
       "category": "Tools",
-      "items": ["Git", "GitHub", "Postman", "npm", "Shell", "PuTTY", "Git Bash", "AJAX", "GitHub Copilot", "Cursor IDE", "Tabnine"]
+      "items": ["Git", "GitHub", "Postman", "Docker", "JIRA"]
     }
   ],
 
   "experience": [
     {
-      "title": "Full Stack Developer",
+      "title": "Senior Full Stack Developer / Technical Lead",
       "company": "Zeapl.ai",
-      "location": "Punjab, India",
       "period": "August 2022 - Present",
       "responsibilities": [
-        "Migrated legacy JavaScript and CodeIgniter code to Angular, improving maintainability, performance, and scalability.",
-        "Developed Campaign Runner and Notification Service with Java Spring Boot, handling asynchronous processing via RabbitMQ and delivering messages across Email, WhatsApp, and Telegram.",
-        "Built Flow Builder UI using React Flow for node-based bot workflows, integrating backend services to enable real-time automation and enhanced user engagement."
+        "Designed and developed scalable full-stack applications using Java, Spring Boot, ReactJS, and Microservices.",
+        "Built and maintained RESTful APIs and backend services with a focus on performance, scalability, and reliability.",
+        "Collaborated with product owners, designers, and QA teams to gather requirements and deliver business-aligned solutions.",
+        "Ensured code quality through reviews, documentation, and adherence to best practices.",
+        "Provided production support and troubleshooting for deployed applications."
+      ]
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "Upwork (Freelance)",
+      "period": "September 2021 - September 2022",
+      "responsibilities": [
+        "Developed full-stack web applications using Java, JavaScript, and React for global clients.",
+        "Implemented backend services and APIs with a focus on modularity and maintainability.",
+        "Worked in agile environments to deliver features within tight timelines."
+      ]
+    },
+    {
+      "title": "Web Developer",
+      "company": "BizmerlinHR",
+      "period": "March 2021 - September 2021",
+      "responsibilities": [
+        "Developed backend APIs using Java and integrated frontend components.",
+        "Collaborated with cross-functional teams to deliver enterprise-grade SaaS features."
+      ]
+    },
+    {
+      "title": "Web Developer",
+      "company": "GLP InfoTech",
+      "period": "November 2017 - December 2020",
+      "responsibilities": [
+        "Built and maintained web applications using HTML, CSS, PHP, Java and JavaScript.",
+        "Improved application performance and ensured long-term maintainability."
       ]
     }
   ],
@@ -80,7 +113,7 @@
         "Migrated legacy PHP code to Java Spring Boot to improve scalability, maintainability, and performance.",
         "Ensured message delivery reliability with logging, error handling, and retry mechanisms."
       ],
-      "technologies": ["Java Spring Boot", "RabbitMQ", "PHP", "MySQL", "Email, WhatsApp, Telegram APIs", "Docker"],
+      "technologies": ["Java", "Spring Boot", "RabbitMQ", "MySQL", "Email, WhatsApp, Telegram APIs", "Docker"],
       "link": "https://projectone.example.com"
     },
     {
@@ -88,20 +121,14 @@
       "description": "Created an interactive workflow builder for bot automation across multiple messaging platforms.",
       "details": [
         "Designed a React Flow-based UI for users to visually create node-based bot workflows.",
-        "Implemented backend services in Spring Boot to handle real-time interactions on WhatsApp and Telegram bots.",
-        "Enabled dynamic workflow execution, allowing each node to trigger actions, messages, or conditional logic.",
-        "Optimized system for scalability and reliability to support concurrent bot flows and multiple users.",
-        "Improved user engagement by providing a visual and interactive bot-building experience."
+        "Implemented backend services in Spring Boot to handle real-time interactions on WhatsApp and Telegram bots."
       ],
       "technologies": ["React.js", "React Flow", "Java Spring Boot", "Node.js", "WhatsApp & Telegram APIs", "MySQL", "REST APIs"],
       "link": "https://projecttwo.example.com"
     }
   ],
   "personal": {
-    "dob": "September 29, 1996",
-    "maritalStatus": "Married",
-    "nationality": "Indian",
     "languages": ["English", "Hindi", "Punjabi"],
-    "address": "Plot No. 221, St No 2, Kiran Colony, Ludhiana Punjab"
+    "nationality": "Indian"
   }
 }

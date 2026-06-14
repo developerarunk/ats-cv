@@ -189,6 +189,15 @@
         #personal {
             display: none; /* Hide personal details section by default */
         }
+
+        .contact-info span::after {
+            content: " | ";
+            color: #aaa;
+        }
+
+        .contact-info span:last-child::after {
+            content: "";
+        }
     </style>
 </head>
 <body>
@@ -220,6 +229,7 @@
                         <span>${data.contact.email}</span>
                         <span><a href="${data.contact.linkedin}">LinkedIn</a></span>
                         <span><a href="${data.contact.github}">GitHub</a></span>
+                        <span><a href="tel:+91 98038 29909">+91 98038 29909</a></span>
                         <span>${data.contact.location}</span>
                     </div>
                 `;
